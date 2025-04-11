@@ -1,7 +1,7 @@
 // 定義變數
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
-let x = 0, y = 0, dx = 10, dy = 10, r = 20, color = "#e6c364";
+let x = 0, y = 0, dx = 10, dy = 10, r = 20, color = "#e6c364", canMove=0;
 
 // 畫圓形
 function drawBall() 
@@ -28,10 +28,10 @@ function keyDownHandler(e)
 document.addEventListener("mousemove", mousemove);
 function mousemove(e)
 {
-	if(canMove == 1)
+	if(canMove)
 	{
-		x=e.clientX-(canvas.offsetLeft);
-		y=e.clientY-(canvas.offsetTop);
+		x=e.clientX-canvas.offsetLeft;
+		y=e.clientY-canvas.offsetTop;
 	}
 }
 
@@ -39,7 +39,7 @@ document.addEventListener("mousedown", mousedown);
 function mousedown(e)
 {
 	canMove = 1;
-	color = "#" + Math.floor(Math.random()*1677215).toString(16); 
+	color = "#" + Math.floor(Math.random()*16777215).toString(16); 
 	
 }
 
